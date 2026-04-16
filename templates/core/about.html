@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About | SmartGridBlog{% endblock %}
+
+{% block content %}
+<!-- Header -->
+<section class="pt-32 pb-12 bg-gradient-to-b from-primary-50/50 to-transparent dark:from-primary-900/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="font-heading text-4xl sm:text-5xl font-bold text-slate-800 dark:text-white mb-4">About Me</h1>
+        <p class="text-xl text-slate-600 dark:text-slate-300 max-w-3xl">
+            Learn more about my research, background, and expertise in power systems, renewable energy, and mathematical optimization.
+        </p>
+    </div>
+</section>
+
+<!-- Main Content -->
+<section class="section-padding">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-3 gap-12">
+            <!-- Profile Sidebar -->
+            <div class="lg:col-span-1">
+                <div class="sticky top-24">
+                    <div class="rounded-2xl overflow-hidden shadow-lg">
+                        <img src="{% static 'images/photo102.jpg' %}" alt="{{ profile.name }}" class="w-full h-auto object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="lg:col-span-2 space-y-12">
+                <!-- Bio -->
+                <div>
+                    <h3 class="font-heading text-2xl font-bold text-slate-800 dark:text-white mb-4">Bio</h3>
+                    <div class="prose prose-lg dark:prose-invert max-w-none text-slate-600 dark:text-slate-300">
+                        <p>I am a full-stack Django developer and energy systems specialist with a strong focus on modeling, optimization, and real-world energy market applications. My technical expertise spans Python, GAMS, Julia, and MATLAB, which I use to design and implement advanced optimization models and data-driven solutions.</p>
+                        <p>I specialize in electricity trading and power procurement, with deep knowledge of power systems operation, control, and planning. My work sits at the intersection of energy and technology, where I develop intelligent systems to support decision-making in complex and uncertain environments.</p>
+                        <p>My research and professional interests include renewable energy integration, machine learning applications for energy systems, and stochastic and distributed optimization techniques.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline -->
+                {% if timeline %}
+                <div>
+                    <h3 class="font-heading text-2xl font-bold text-slate-800 dark:text-white mb-6">Experience & Education</h3>
+                    <div class="space-y-6">
+                        {% for item in timeline %}
+                        <div class="relative pl-8 border-l-2 border-primary-200 dark:border-primary-800">
+                            <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-primary-500"></div>
+                            <div class="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
+                                <div class="flex flex-wrap items-start justify-between gap-2 mb-2">
+                                    <div>
+                                        <h4 class="font-heading font-semibold text-slate-800 dark:text-white">{{ item.title }}</h4>
+                                        <p class="text-primary-500">{{ item.organization }}</p>
+                                    </div>
+                                    <span class="text-sm text-slate-500 dark:text-slate-400 whitespace-nowrap">{{ item.date_range }}</span>
+                                </div>
+                                {% if item.description %}
+                                <p class="text-slate-600 dark:text-slate-300 text-sm">{{ item.description }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Skills -->
+                {% if skills %}
+                <div>
+                    <h3 class="font-heading text-2xl font-bold text-slate-800 dark:text-white mb-6">Skills & Expertise</h3>
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <!-- Technical Skills -->
+                        <div class="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
+                            <h4 class="font-heading font-semibold text-slate-800 dark:text-white mb-4 flex items-center">
+                                <svg class="w-5 h-5 text-primary-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                                </svg>
+                                Technical
+                            </h4>
+                            <div class="flex flex-wrap gap-2">
+                                {% for skill in skills %}
+                                {% if skill.category == 'technical' %}
+                                <span class="px-4 py-2 rounded-lg bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-sm font-medium">
+                                    {{ skill.name }}
+                                </span>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <!-- Research Skills -->
+                        <div class="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
+                            <h4 class="font-heading font-semibold text-slate-800 dark:text-white mb-4 flex items-center">
+                                <svg class="w-5 h-5 text-accent-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                                Research
+                            </h4>
+                            <div class="flex flex-wrap gap-2">
+                                {% for skill in skills %}
+                                {% if skill.category == 'research' %}
+                                <span class="px-4 py-2 rounded-lg bg-accent-50 dark:bg-accent-900/30 text-accent-600 dark:text-accent-400 text-sm font-medium">
+                                    {{ skill.name }}
+                                </span>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

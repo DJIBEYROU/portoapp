@@ -1,0 +1,296 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home | SmartGridBlog{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="min-h-screen flex items-center pt-16 relative overflow-hidden">
+    <!-- Animated background -->
+    <div class="absolute inset-0 -z-10">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-accent-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800"></div>
+        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 25% 25%, rgba(14, 165, 233, 0.1) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <!-- Left content -->
+            <div class="text-center lg:text-left">
+                <div class="inline-flex items-center px-4 py-2 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-sm font-medium mb-6">
+                    <span class="w-2 h-2 rounded-full bg-primary-500 mr-2 animate-pulse"></span>
+                    Developer and power systems engineer
+                </div>
+                
+                <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                    <span class="gradient-text">Djibeyrou Ba</span>
+                </h1>
+                
+                <div class="text-lg text-slate-600 dark:text-slate-300 mb-8 max-w-xl mx-auto lg:mx-0 space-y-2">
+                    <p>• Activities: Research, education, and consulting.</p>
+                    <p>• Core specialties: Power systems, renewable energy resources, and mathematical optimization.</p>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <a href="{% url 'projects:project_list' %}" class="inline-flex items-center justify-center px-6 py-3 rounded-xl gradient-bg text-white font-semibold hover:opacity-90 transition-opacity">
+                        View My Work
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                    <a href="{% url 'contact:contact' %}" class="inline-flex items-center justify-center px-6 py-3 rounded-xl border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-200 font-semibold hover:border-primary-500 hover:text-primary-500 transition-colors">
+                        Contact Me
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right content - Visual -->
+            <div class="relative">
+                <div class="relative mx-auto max-w-md">
+                    <!-- Electric Network Animation -->
+                    <svg class="absolute inset-0 w-full h-full -m-12" viewBox="0 0 450 450" xmlns="http://www.w3.org/2000/svg" style="z-index: 0;">
+                        <!-- Network nodes -->
+                        <circle cx="30" cy="80" r="8" fill="#3b82f6" class="animate-pulse"/>
+                        <circle cx="420" cy="60" r="8" fill="#3b82f6" class="animate-pulse" style="animation-delay: 0.2s"/>
+                        <circle cx="430" cy="225" r="8" fill="#3b82f6" class="animate-pulse" style="animation-delay: 0.4s"/>
+                        <circle cx="400" cy="390" r="8" fill="#3b82f6" class="animate-pulse" style="animation-delay: 0.6s"/>
+                        <circle cx="30" cy="370" r="8" fill="#3b82f6" class="animate-pulse" style="animation-delay: 0.8s"/>
+                        <circle cx="20" cy="200" r="8" fill="#3b82f6" class="animate-pulse" style="animation-delay: 1s"/>
+                        <circle cx="225" cy="20" r="8" fill="#3b82f6" class="animate-pulse" style="animation-delay: 0.3s"/>
+                        <circle cx="225" cy="430" r="8" fill="#3b82f6" class="animate-pulse" style="animation-delay: 0.7s"/>
+                        
+                        <!-- Connecting lines to center -->
+                        <line x1="30" y1="80" x2="225" y2="225" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6,3" class="animate-pulse" opacity="0.5"/>
+                        <line x1="420" y1="60" x2="225" y2="225" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6,3" class="animate-pulse" style="animation-delay: 0.2s" opacity="0.5"/>
+                        <line x1="430" y1="225" x2="225" y2="225" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6,3" class="animate-pulse" style="animation-delay: 0.4s" opacity="0.5"/>
+                        <line x1="400" y1="390" x2="225" y2="225" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6,3" class="animate-pulse" style="animation-delay: 0.6s" opacity="0.5"/>
+                        <line x1="30" y1="370" x2="225" y2="225" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6,3" class="animate-pulse" style="animation-delay: 0.8s" opacity="0.5"/>
+                        <line x1="20" y1="200" x2="225" y2="225" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6,3" class="animate-pulse" style="animation-delay: 1s" opacity="0.5"/>
+                        <line x1="225" y1="20" x2="225" y2="225" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6,3" class="animate-pulse" style="animation-delay: 0.3s" opacity="0.5"/>
+                        <line x1="225" y1="430" x2="225" y2="225" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6,3" class="animate-pulse" style="animation-delay: 0.7s" opacity="0.5"/>
+                        
+                        <!-- Cross connections -->
+                        <line x1="30" y1="80" x2="420" y2="60" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.25"/>
+                        <line x1="420" y1="60" x2="430" y2="225" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.25"/>
+                        <line x1="430" y1="225" x2="400" y2="390" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.25"/>
+                        <line x1="400" y1="390" x2="30" y2="370" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.25"/>
+                        <line x1="30" y1="370" x2="20" y2="200" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.25"/>
+                        <line x1="20" y1="200" x2="30" y2="80" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.25"/>
+                    </svg>
+                    
+                    <!-- Main card -->
+                    <div class="relative glass rounded-3xl p-8 shadow-xl" style="z-index: 1;">
+                        <div class="rounded-2xl overflow-hidden shadow-xl">
+                            <img src="{% static 'images/photo101.png' %}" alt="Djibeyrou Ba" class="w-full h-auto object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Research Interests Section -->
+<section class="section-padding bg-white dark:bg-slate-800/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="font-heading text-3xl sm:text-4xl font-bold text-slate-800 dark:text-white mb-4">
+                Research Interests
+            </h2>
+            <p class="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+                My research focuses on creating sustainable and efficient energy solutions for the future.
+            </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Interest Card 1 -->
+            <div class="card-hover bg-slate-50 dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700">
+                <div class="w-12 h-12 rounded-xl gradient-bg flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                </div>
+                <h3 class="font-heading text-xl font-semibold text-slate-800 dark:text-white mb-2">
+                    Power Systems Optimization
+                </h3>
+                <p class="text-slate-600 dark:text-slate-300">
+                    Developing advanced algorithms for efficient power grid operation and load balancing.
+                </p>
+            </div>
+
+            <!-- Interest Card 2 -->
+            <div class="card-hover bg-slate-50 dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700">
+                <div class="w-12 h-12 rounded-xl gradient-bg flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                </div>
+                <h3 class="font-heading text-xl font-semibold text-slate-800 dark:text-white mb-2">
+                    Renewable Integration
+                </h3>
+                <p class="text-slate-600 dark:text-slate-300">
+                    Research on seamless integration of solar, wind, and other renewable sources.
+                </p>
+            </div>
+
+            <!-- Interest Card 3 -->
+            <div class="card-hover bg-slate-50 dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700">
+                <div class="w-12 h-12 rounded-xl gradient-bg flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                </div>
+                <h3 class="font-heading text-xl font-semibold text-slate-800 dark:text-white mb-2">
+                    Smart Grids
+                </h3>
+                <p class="text-slate-600 dark:text-slate-300">
+                    Building intelligent grid systems with AI and IoT for better energy management.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Projects Section -->
+{% if featured_projects %}
+<section class="section-padding">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center mb-12">
+            <div>
+                <h2 class="font-heading text-3xl sm:text-4xl font-bold text-slate-800 dark:text-white mb-2">
+                    Featured Projects
+                </h2>
+                <p class="text-slate-600 dark:text-slate-300">
+                    Recent research and development work
+                </p>
+            </div>
+            <a href="{% url 'projects:project_list' %}" class="hidden sm:inline-flex items-center text-primary-500 hover:text-primary-600 font-medium">
+                View All Projects
+                <svg class="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </a>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for project in featured_projects %}
+            <a href="{% url 'projects:project_detail' project.slug %}" class="card-hover group block bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700">
+                <div class="aspect-video bg-gradient-to-br from-primary-100 to-accent-100 dark:from-primary-900/30 dark:to-accent-900/30 relative overflow-hidden">
+                    {% if project.image %}
+                    <img src="{{ project.image.url }}" alt="{{ project.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    {% else %}
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-primary-300 dark:text-primary-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="p-6">
+                    <h3 class="font-heading text-lg font-semibold text-slate-800 dark:text-white mb-2 group-hover:text-primary-500 transition-colors">
+                        {{ project.title }}
+                    </h3>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm mb-4 line-clamp-2">
+                        {{ project.short_description|default:project.description|truncatewords:20 }}
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        {% for tech in project.technologies.all|slice:3 %}
+                        <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs">
+                            {{ tech.name }}
+                        </span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+
+        <div class="text-center mt-8 sm:hidden">
+            <a href="{% url 'projects:project_list' %}" class="inline-flex items-center text-primary-500 hover:text-primary-600 font-medium">
+                View All Projects
+                <svg class="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Latest Blog Posts -->
+{% if latest_posts %}
+<section class="section-padding bg-white dark:bg-slate-800/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center mb-12">
+            <div>
+                <h2 class="font-heading text-3xl sm:text-4xl font-bold text-slate-800 dark:text-white mb-2">
+                    Latest Articles
+                </h2>
+                <p class="text-slate-600 dark:text-slate-300">
+                    Insights and research findings
+                </p>
+            </div>
+            <a href="{% url 'blog:blog_list' %}" class="hidden sm:inline-flex items-center text-primary-500 hover:text-primary-600 font-medium">
+                View All Articles
+                <svg class="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </a>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for post in latest_posts %}
+            <a href="{% url 'blog:blog_detail' post.slug %}" class="card-hover group block bg-slate-50 dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700">
+                <div class="aspect-video bg-gradient-to-br from-primary-100 to-accent-100 dark:from-primary-900/30 dark:to-accent-900/30 relative overflow-hidden">
+                    {% if post.featured_image %}
+                    <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    {% else %}
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-primary-300 dark:text-primary-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                        </svg>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center text-sm text-slate-500 dark:text-slate-400 mb-3">
+                        <span>{{ post.published_at|date:"M d, Y" }}</span>
+                        <span class="mx-2">·</span>
+                        <span>{{ post.reading_time }}</span>
+                    </div>
+                    <h3 class="font-heading text-lg font-semibold text-slate-800 dark:text-white mb-2 group-hover:text-primary-500 transition-colors line-clamp-2">
+                        {{ post.title }}
+                    </h3>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm line-clamp-3">
+                        {{ post.excerpt|default:post.content|truncatewords:25 }}
+                    </p>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Contact CTA -->
+<section class="py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="relative rounded-3xl overflow-hidden">
+            <div class="absolute inset-0 gradient-bg"></div>
+            <div class="relative p-8 sm:p-12 text-center">
+                <h2 class="font-heading text-2xl sm:text-3xl font-bold text-white mb-2">
+                    Let's Collaborate
+                </h2>
+                <p class="text-white/80 max-w-2xl mx-auto mb-4">
+                    Interested in research collaboration or have questions about my work? Feel free to reach out.
+                </p>
+                <a href="{% url 'contact:contact' %}" class="inline-flex items-center px-6 py-3 rounded-xl bg-white text-primary-600 font-semibold hover:bg-slate-100 transition-colors">
+                    Get In Touch
+                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
