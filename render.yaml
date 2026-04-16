@@ -1,0 +1,15 @@
+databases:
+  - name: portofolio_db
+    databaseName: portofolio_db
+    plan: free
+
+services:
+  - type: web
+    name: portofolio
+    env: python
+    pythonVersion: "3.11"
+    buildCommand: ./build.sh
+    startCommand: gunicorn portofolio.wsgi:application --bind 0.0.0.0:$PORT
+    healthCheckPath: /
+    plan: free
+    autoDeploy: true

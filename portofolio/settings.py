@@ -67,16 +67,26 @@ WSGI_APPLICATION = "portofolio.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+# Use PostgreSQL on Render, SQLite locally
+if os.environ.get("DATABASE_URL"):
+    import dj_database_url
+
+    DATABASES = {
+        "default": dj_database_url.config(
+            default=os.environ.get("DATABASE_URL"), conn_max_age=600, ssl_require=True
+        )
     }
-}
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
 
 
 # Password validation
-# https://docs.djangoproject.com/en/4.2/topics/auth/password-validator/
+# https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validator/
 
 AUTH_PASSWORD_VALIDATORS = [
     {
