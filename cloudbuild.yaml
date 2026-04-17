@@ -1,0 +1,30 @@
+# Google Cloud Build configuration
+steps:
+  # Build the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'gcr.io/$PROJECT_ID/portoapp:$COMMIT_SHA'
+      - '-t'
+      - 'gcr.io/$PROJECT_ID/portoapp:latest'
+      - '.'
+
+  # Push the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'gcr.io/$PROJECT_ID/portoapp:$COMMIT_SHA'
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'gcr.io/$PROJECT_ID/portoapp:latest'
+
+# Store images in Container Registry
+images:
+  - 'gcr.io/$PROJECT_ID/portoapp:$COMMIT_SHA'
+  - 'gcr.io/$PROJECT_ID/portoapp:latest'
+
+# Timeout
+timeout: '1200s'
