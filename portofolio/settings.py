@@ -3,7 +3,6 @@ Django settings for portofolio project.
 """
 
 import os
-import dj_database_url
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -69,12 +68,26 @@ WSGI_APPLICATION = "portofolio.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 # Use PostgreSQL on Render, SQLite locally
-if os.environ.get("DATABASE_URL"):
-    DATABASES = {
-        "default": dj_database_url.config(
-            default=os.environ.get("DATABASE_URL"), conn_max_age=600
-        )
-    }
+DATABASE_URL = os.environ.get("DATABASE_URL")
+
+if DATABASE_URL:
+    try:
+        import dj_database_url
+
+        DATABASES = {
+            "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=600)
+        }
+    except ImportError:
+        DATABASES = {
+            "default": {
+                "ENGINE": "django.db.backends.postgresql",
+                "NAME": DATABASE_URL.split("/")[-1].split("?")[0],
+                "USER": DATABASE_URL.split(":")[1].replace("//", ""),
+                "PASSWORD": DATABASE_URL.split(":")[2].split("@")[0],
+                "HOST": DATABASE_URL.split("@")[1].split(":")[0],
+                "PORT": DATABASE_URL.split(":")[3].split("/")[0],
+            }
+        }
 else:
     DATABASES = {
         "default": {
@@ -85,7 +98,7 @@ else:
 
 
 # Password validation
-# https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validator/
+# https://docs.djangoproject.com/en/4.2/topics/auth/password-validator/
 
 AUTH_PASSWORD_VALIDATORS = [
     {
